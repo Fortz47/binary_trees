@@ -35,7 +35,7 @@ typedef struct binary_tree_s heap_t;
 ```
 
 ### Print function
-binary_tree_print.c: Function to print binary trees in a pretty way
+void binary_tree_print(const binary_tree_t *tree): Function to print binary trees in a pretty way
 ```c
                            .----------------------(006)-------.
                       .--(001)-------.                   .--(008)--.
