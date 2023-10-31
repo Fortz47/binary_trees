@@ -1,39 +1,23 @@
 #include "binary_trees.h"
-#include "math.h"
-
 
 /**
- * count_nodes - recursive helper function
- * @tree: pointer to root node of binary tree
- * @count: count variable
+ * binary_tree_height - measures the height of a binary tree
+ * @tree: A pointer to the root node of the tree to measure the height
  *
- * Return: number of nodes in the binary tree
- */
-void count_nodes(const binary_tree_t *tree, size_t *count)
-{
-	if (tree != NULL)
-	{
-		*count++;
-		count_nodes(tree->left, count);
-		count_nodes(tree->right, count);
-	}
-}
-
-/**
- * binary_tree_height - calculates the height of a binary tree
- * @tree: pointer to the root node of the binary tree
- *
- * Return: height of the binary tree
+ * Return: The height of the tree, or 0 if `tree` is NULL
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t count = 0;
-	double value;
-	
+	size_t height, left_path, right_path;
+
 	if (tree == NULL)
 		return (0);
 
-	count_nodes(tree, &count);
-	value = log2((double)count) - 1
-	return ((size_t)value);
+	/* Check if both `left-child` and `right-child` are not NULL */
+	left_path = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	right_path = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+
+	height = (left_path > right_path) ? left_path : right_path;
+
+	return (height);
 }
