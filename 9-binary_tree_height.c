@@ -9,7 +9,7 @@
  *
  * Return: number of nodes in the binary tree
  */
-size_t count_nodes(const binary_tree_t *tree, size_t *count)
+void count_nodes(const binary_tree_t *tree, size_t *count)
 {
 	if (tree != NULL)
 	{
@@ -17,7 +17,6 @@ size_t count_nodes(const binary_tree_t *tree, size_t *count)
 		count_nodes(tree->left, count);
 		count_nodes(tree->right, count);
 	}
-	return (*count);
 }
 
 /**
