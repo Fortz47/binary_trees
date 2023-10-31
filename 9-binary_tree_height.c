@@ -2,6 +2,10 @@
 
 /**
  * binary_tree_height - measures the height of a binary tree
+ *
+ * Description: This measures the length of the longest path
+ *              from the root node to a leaf node
+ *              (also known as "maximum depth")
  * @tree: A pointer to the root node of the tree to measure the height
  *
  * Return: The height of the tree, or 0 if `tree` is NULL
