@@ -29,7 +29,10 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 	if (parent->left)
 	{
 		old_child_value = parent->left->n;
+		/* Create another new node as the left-child of `new` */
 		new->left = binary_tree_node(new, old_child_value);
+		/* Free the parent left-child for reallocation */
+		free(parent->left);
 	}
 	else
 		new->left = NULL;
