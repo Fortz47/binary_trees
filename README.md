@@ -1,6 +1,7 @@
 # Binary Trees Project
 
 ## Data Structures
+The following data structures and types where used in this project
 
 ### Basic Binary Tree
 
