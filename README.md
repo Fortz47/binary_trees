@@ -1,4 +1,16 @@
-# Binary Trees Project
+# Binary trees
+This is a group project to test the understanding of the following:
+- The binary trees
+- The difference between a binary tree and a Binary Search Tree
+- The possible benefit in terms of time complexity compared to linked lists
+- The depth, the height, the size of a binary tree
+- The different traversal methods to go through a binary tree
+- The difference between a complete, a full, a perfect, a balanced binary tree
+
+The understanding of the following forms of binary trees are also tested:
+- Binary Search Tree
+- AVL Tree
+- Max Binary Heap
 
 ## Data Structures
 The following data structures and types where used in this project
@@ -44,3 +56,4 @@ void binary_tree_print(const binary_tree_t *tree): Function to print binary tree
   .--(-08)--.                           (004)
 (-09)     (-07)
 ```
+[Original code](Original code from http://stackoverflow.com/a/13755911/5184480)
