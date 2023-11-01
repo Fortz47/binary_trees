@@ -1,5 +1,6 @@
 #include "binary_trees.h"
-#include "math.h"
+#include <math.h>
+#include <stdio.h>
 
 
 /**
@@ -13,7 +14,7 @@ void count_nodes(const binary_tree_t *tree, size_t *count)
 {
 	if (tree != NULL)
 	{
-		*count++;
+		*count += 1;
 		count_nodes(tree->left, count);
 		count_nodes(tree->right, count);
 	}
@@ -34,6 +35,6 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		return (0);
 
 	count_nodes(tree, &count);
-	value = log2((double)count) - 1
+	value = log2((double)count) - 1;
 	return ((size_t)value);
 }
