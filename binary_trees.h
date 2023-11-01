@@ -31,6 +31,17 @@ typedef struct binary_trees_s avl_t;
 /* Max Binary Heap */
 typedef struct binary_trees_s heap_t;
 
+/**
+ * struct path_s - Binary tree path node
+ * @node: Node along the path of the tree
+ * @next: Pointer to the next path node
+ */
+typedef struct path_s
+{
+	binary_tree_t *node;
+	struct path_s *next;
+} path_t;
+
 /* Visualise trees */
 void binary_tree_print(const binary_tree_t *tree);
 
@@ -60,7 +71,8 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 /* Advanced task functions */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+				     const binary_tree_t *second);
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
