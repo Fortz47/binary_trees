@@ -11,8 +11,7 @@
  */
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
-	binary_tree_t *new;
-	int old_child_value;
+	binary_tree_t *new, *old_child;
 
 	if (parent == NULL)
 		return (NULL);
@@ -28,11 +27,11 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 	/* Check if the parent already has a right-child */
 	if (parent->right)
 	{
-		old_child_value = parent->right->n;
-		/* Create another new node as the right-child of `new` */
-		new->right = binary_tree_node(new, old_child_value);
-		/* Free the parent right-child for reallocation */
-		free(parent->right);
+		old_child = parent->right;
+		/* Make the `new` node the parent of the `old_child` */
+		old_child->parent = new;
+		/* Assign the expected right-child */
+		new->right = old_child;
 	}
 	else
 		new->right = NULL;
