@@ -28,7 +28,7 @@ size_t tree_height(const binary_tree_t *tree)
 	size_t height, left_path, right_path;
 
 	if (tree == NULL)
-                return (0);
+		return (0);
 
 	/* Check if both `left-child` and `right-child` are not NULL */
 	left_path = tree->left ? 1 + tree_height(tree->left) : 0;
@@ -53,7 +53,7 @@ int binary_tree_is_full(const binary_tree_t *tree)
 		return (0);
 
 	level = tree_height(tree) + 1;
-        /* evaluates 2**level */
+	/* evaluates 2**level */
 	i = 1 << level;
 	full_tree = i - 1;
 	count_nodes(tree, &count);
