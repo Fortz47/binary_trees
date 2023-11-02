@@ -12,4 +12,6 @@ avl_t *array_to_avl(int *array, size_t size)
 {
 	if (array == NULL || size == 0)
 		return (NULL);
+
+	return (NULL);
 }
