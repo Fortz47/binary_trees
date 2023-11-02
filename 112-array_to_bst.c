@@ -11,4 +11,6 @@ bst_t *array_to_bst(int *array, size_t size)
 {
 	if (array == NULL || size == 0)
 		return (NULL);
+
+	return (NULL);
 }
