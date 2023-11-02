@@ -40,12 +40,12 @@ size_t tree_height(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_is_full - a function that checks if a binary tree is full
+ * binary_tree_is_perfect - a function that checks if a binary tree is perfect
  * @tree: pointer to root node of binary tree
  *
- * Return: 0 if tree is NUll or not full else 1
+ * Return: 0 if tree is NUll or not perfect else 1
  */
-int binary_tree_is_full(const binary_tree_t *tree)
+int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	size_t count = 0, full_tree, i, level;
 
