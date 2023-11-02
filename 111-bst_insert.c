@@ -20,8 +20,10 @@ bst_t *bst_insert(bst_t **tree, int value)
 		parent = current;
 		if (value < current->n)
 			current = current->left;
-		else
+		else if (value > current->n)
 			current = current->right;
+		else
+			break;
 	}
 
 	/* Create the new node */
