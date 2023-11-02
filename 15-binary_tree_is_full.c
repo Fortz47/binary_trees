@@ -1,71 +1,41 @@
 #include "binary_trees.h"
 
-
 /**
- * count_nodes - recursive helper function
- * @tree: pointer to root node of binary tree
- * @count: count variable
+ * full_tree_recursive_helper - Check if a binary tree is full
+ * @tree: Pointer to the root node of the binary tree
  *
- * Return: number of nodes in the binary tree
+ * Return: 1 if the tree is full, 0 otherwise
  */
-void count_nodes(const binary_tree_t *tree, size_t *count)
+int full_tree_recursive_helper(const binary_tree_t *tree)
 {
-	if (tree != NULL)
-	{
-		*count += 1;
-		count_nodes(tree->left, count);
-		count_nodes(tree->right, count);
-	}
-}
-
-/**
- * tree_height - calculates the height of a binary tree
- * @tree: pointer to the root node of the binary tree
- *
- * Return: height of the binary tree
- */
-size_t tree_height(const binary_tree_t *tree)
-{
-	size_t height, left_path, right_path;
-
 	if (tree == NULL)
+		return (1);
+
+	/* Check if one subtree is NULL and the other is not */
+	if ((tree->left == NULL && tree->right != NULL) ||
+			(tree->left != NULL && tree->right == NULL))
 		return (0);
 
-	/* Check if both `left-child` and `right-child` are not NULL */
-	left_path = tree->left ? 1 + tree_height(tree->left) : 0;
-	right_path = tree->right ? 1 + tree_height(tree->right) : 0;
 
-	height = (left_path > right_path) ? left_path : right_path;
-
-	return (height);
+	return (full_tree_recursive_helper(tree->left) &&
+		full_tree_recursive_helper(tree->right));
 }
 
 /**
- * binary_tree_is_full - a function that checks if a binary tree is full
- * @tree: pointer to root node of binary tree
+ * binary_tree_is_full - Check if a binary tree is full
+ * @tree: Pointer to the root node of the binary tree
  *
- * Return: 0 if tree is NUll or not full else 1
+ * Return: 1 if the tree is full, 0 otherwise
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
-	size_t count = 0, full_tree, i = 1, level;
+	int value;
 
 	if (tree == NULL)
 		return (0);
 
-	if (tree->left == NULL && tree->right == NULL)
-		return (1);
-	level = tree_height(tree) + 1;
-	/* evaluates 2**level */
-	while (level)
-	{
-		i *= 2;
-		level--;
-	}
+	value = full_tree_recursive_helper(tree);
 
-	full_tree = i - 1;
-	count_nodes(tree, &count);
-	if (count != full_tree)
-		return (0);
-	return (1);
+	return (value);
 }
+

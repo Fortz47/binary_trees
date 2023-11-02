@@ -11,7 +11,7 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node)
 	binary_tree_t *sibling, *p;
 	int data;
 
-	if (!node || !node->parent)
+	if (node == NULL || node->parent == NULL)
 		return (NULL);
 
 	data = node->n;
@@ -34,7 +34,7 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 {
 	binary_tree_t *parent, *uncle;
 
-	if (!node || !node->parent->parent)
+	if (node == NULL || node->parent->parent == NULL)
 		return (NULL);
 
 	parent = node->parent;

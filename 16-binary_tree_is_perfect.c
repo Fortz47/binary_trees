@@ -1,70 +1,28 @@
 #include "binary_trees.h"
 
 /**
- * count_nodes - recursive helper function
- * @tree: pointer to root node of binary tree
- * @count: count variable
+ * binary_tree_is_perfect - Check if a binary tree is perfect
+ * @tree: Pointer to the root node of the binary tree
  *
- * Return: number of nodes in the binary tree
- */
-void count_nodes(const binary_tree_t *tree, size_t *count)
-{
-	if (tree != NULL)
-	{
-		*count += 1;
-		count_nodes(tree->left, count);
-		count_nodes(tree->right, count);
-	}
-}
-
-/**
- * tree_height - calculates the height of a binary tree
- * @tree: pointer to the root node of the binary tree
- *
- * Return: height of the binary tree
- */
-size_t tree_height(const binary_tree_t *tree)
-{
-	size_t height, left_path, right_path;
-
-	if (tree == NULL)
-		return (0);
-
-	/* Check if both `left-child` and `right-child` are not NULL */
-	left_path = tree->left ? 1 + tree_height(tree->left) : 0;
-	right_path = tree->right ? 1 + tree_height(tree->right) : 0;
-
-	height = (left_path > right_path) ? left_path : right_path;
-
-	return (height);
-}
-
-/**
- * binary_tree_is_perfect - a function that checks if a binary tree is perfect
- * @tree: pointer to root node of binary tree
- *
- * Return: 0 if tree is NUll or not full else 1
+ * Return: 1 if the tree is perfect, 0 otherwise
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	size_t count = 0, full_tree, i = 1, level;
+	size_t height = 0, nodes = 0, expected_nodes = 1;
 
 	if (tree == NULL)
 		return (0);
 
-	if (tree->left == NULL && tree->right == NULL)
-		return (0);
-	level = tree_height(tree) + 1;
-	/* evaluates 2**level */
-	while (level)
+	/* Calculate height and expected nodes for a perfect tree */
+	while (tree->left)
 	{
-		i *= 2;
-		level--;
+		height++;
+		expected_nodes = (expected_nodes << 1) + 1;
+		tree = tree->left;
 	}
 
-	full_tree = i - 1;
-	count_nodes(tree, &count);
-	if (count != full_tree)
-		return (0);
-	return (1);
+	/* Calculate the actual number of nodes */
+	nodes = (1 << height) - 1;
+
+	return (nodes == expected_nodes);
 }
