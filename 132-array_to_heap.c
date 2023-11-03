@@ -10,7 +10,7 @@
  */
 heap_t *array_to_heap(int *array, size_t size)
 {
-	if (array ==NULL || size == 0)
+	if (array == NULL || size == 0)
 		return (NULL);
 
 	return (NULL);
